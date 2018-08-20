@@ -8,7 +8,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -45,7 +44,6 @@ public class MainFragment extends Fragment {
     private class PaycheckAdapter extends ArrayAdapter<FractionOfCheck> {
         ArrayList<FractionOfCheck> data;
 
-
         public PaycheckAdapter(ArrayList<FractionOfCheck> data,@NonNull Context context) {
             super(context, R.layout.acitivty_list_item);
             this.data = data;
@@ -55,13 +53,15 @@ public class MainFragment extends Fragment {
         @Override
         public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
             FractionOfCheck fc = data.get(position);
-            convertView = View.inflate(getContext(),R.layout.acitivty_list_item,parent);
+            LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+            convertView = inflater.inflate(R.layout.acitivty_list_item,null, true);
 
             TextView describe = convertView.findViewById(R.id.textview_describtion);
             TextView money = convertView.findViewById(R.id.textview_money);
 
-            describe.setText(fc.getDescription());
-            money.setText(fc.getAmount());
+            describe.setText(fc.getTile());
+            money.setText(String.valueOf(fc.getAmount()));
 
             return convertView;
         }

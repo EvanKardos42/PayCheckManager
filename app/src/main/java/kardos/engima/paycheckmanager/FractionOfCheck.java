@@ -3,13 +3,13 @@ package kardos.engima.paycheckmanager;
 public class FractionOfCheck {
     public static int sharedNum = 0;
     private int color, amount, percentage,index;
-    private String description;
+    private String tile;
 
     public FractionOfCheck(int color, int amount, int percentage, String description){
         this.color = color;
         this.amount = amount;
         this.percentage = percentage;
-        this.description = description;
+        this.tile = description;
         this.index = sharedNum;
         sharedNum++;
     }
@@ -18,7 +18,7 @@ public class FractionOfCheck {
         color = 0;
         amount = 0;
         percentage = 0;
-        description = "";
+        tile = "hello world";
         this.index = sharedNum;
         sharedNum++;
     }
@@ -47,12 +47,12 @@ public class FractionOfCheck {
         return percentage;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setTile(String tile) {
+        this.tile = tile;
     }
 
-    public String getDescription() {
-        return description;
+    public String getTile() {
+        return tile;
     }
 
     public void setIndex(int index) {
